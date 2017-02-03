@@ -70,8 +70,8 @@ public class Inventory {
         }
         throw new ItemNotFound("Enter code item is not founded");
     }
-    public double totalInventoryCost(){
-        double total = 0;
+    public int totalInventoryCost(){
+        int total = 0;
         for(InventoryItem i : item){
             total+=i.getCost();
         }

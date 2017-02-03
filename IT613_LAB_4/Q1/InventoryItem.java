@@ -38,8 +38,8 @@ public class InventoryItem {
     public int getStock(){
         return this.qty_in_stock;
     }
-    public double getCost(){
-        return this.cost;
+    public int getCost(){
+        return (int)this.cost;
     }
     public boolean isUnderStock(){
         if(this.qty_in_stock <= this.min_required_stock)
