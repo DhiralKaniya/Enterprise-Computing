@@ -1,0 +1,87 @@
+Hello Guyz this Question is made for the use of the Object type(Iterator),understanding about it and how to implement it and how to deal with the iterator and for the practice purpose of the 1st in sem exam.
+
+Q2 :-
+Implement AccountHolder class that encapsulate : AccountNumber, HolderName, ContactNumber, AvailableBalance, MinBalance,AccountHoldertype for the Bank. MinBalance is used to check weather the user's available balance is reach to lower bound of the balance. A Structure implementation is given to you. Write a code that implement all variables getter matter and following mention method in java.
+
+You are not suppose to change anything from the below method. You just have to implment this method and you can implement other methods also if you required.
+
+Class AccountHolder{
+	private int AccountNumber;
+	private String HolderName;
+	private double ContactNumber;
+	private double AvailableBalance;
+	private double MinBalance;
+	private String AccountHolderType;
+	private double interest;
+
+	public AccountHolder(int AccountNumber,String HolderName,double ContactNumber,double DepositeAmount,double MinBalance,String AccountHolderType){
+		//initialize all the varible with the argument's value
+		//initialize interest 10% of the Deposite Amount 
+	}
+
+	public AccountHolder(int AccountNumber,String HolderName,double ContactNumber,String AccountHolderType){
+		//Set min balance,interest and Available balance as null;
+	}
+
+	public int getAccountNumber(){
+
+	}
+	public String getHolderName(){
+
+	}
+	public double getContactNumber(){
+
+	}
+	public double getAvailableBanlance(){
+
+	}
+	public double getMinBalance(){ 
+
+	}
+	public String getAccountType(){
+
+	}
+	public void deposite(double amount){
+		//Add amount to the available amount and add 10% interest 
+	}
+	public void withdrawn(double amount)throws InSufficientBalanace {
+
+	}
+	public boolean isMinBalance(){
+
+	}
+}
+
+
+
+Bank class is mentaining the AccountHolder details and it having the different methods which mention as below.
+
+
+public class Bank{
+	
+	
+	public Bank(){ }
+	
+	public void addAccountHolder(AccountHolder new_accountHolder){ }
+	
+	public void depositeAmount(int AccountNumber,double amount)throws NoAccountFound, DepositeLimitExcced{ }
+	//deposite money according to the account type if saving account then limit 50,000 else no limit
+
+
+	public void withdrawnAmount(int AccountNumber,double amount)throws NoAccountFound, InSufficientBalance, WithdrawnLimitExceed{ }
+	//withdrawn amount according to the account type;
+	//if account type is saving then don't allow withdrawn money less than min amount
+
+	private AccountHolder search(int AccountNumber)throws NoAccountFound{ }
+	
+	public AccountHolder[] AccountUnderMinBalance(){ }
+	
+	public double CheckBalance(int AccountNumber)NoAccountFound{ }
+		
+	public double calInterest(int AccountNumber)NoAccountFound{ }
+
+
+}
+
+Create all required user defind Exception class and implement it in above class
+Create BankTester class which having bank class object and that perform all functionality which mention above

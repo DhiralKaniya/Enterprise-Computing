@@ -1,0 +1,37 @@
+Hello Guyz this Question is made for the use of the Object type(Iterator),understanding about it and how to implement it and how to deal with the iterator and for the practice purpose of the 1st in sem exam.
+
+Q1 :- 
+
+Task 1 :- We all are familier with the queue data structure. Implements a queue class that having following method interface. You are not suppose to change anything in the interface. if you required more methods to excute this method in that case you can implment those method. 
+
+Task 2 :- Using this class user of this class should be able to create anytype of java object. It is expected that internal storage of Queue object should not run out of space.at the same time it does not waste storage.
+
+Create Two tester class that should implement two different kind of the object for the queue class
+
+public class Queue(){
+	
+	public Queue();
+	//Intialization
+
+	public void add(Object e);
+	//its add element at the tail of the queue
+
+	public Object poll();
+	//its retrives and remove the head element from the queue
+	
+	public Object remove() throws NoSuchElementException;
+	//its retrives and remove the head elemenet from the queue and throws exception if the queue is empty
+
+	public Object peek();
+	//its retrive head element of the queue but not remove element from the head
+
+	public Object Element()throws NoSuchElementException;
+	//its retrive the element from the head and throws exception when element not founded and also not remove element from the head
+
+}
+
+
+
+// References
+1 :- https://docs.oracle.com/javase/7/docs/api/java/util/Queue.html
+2 :- http://www.geeksforgeeks.org/queue-interface-java/
