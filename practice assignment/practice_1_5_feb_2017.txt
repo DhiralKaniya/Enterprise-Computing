@@ -8,7 +8,7 @@ Task 2 :- Using this class user of this class should be able to create anytype o
 
 Create Two tester class that should implement two different kind of the object for the queue class
 
-public class Queue(){
+public class Queue{
 	
 	public Queue();
 	//Intialization
