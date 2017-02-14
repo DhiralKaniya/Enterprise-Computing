@@ -178,3 +178,38 @@ Step 4 :- Fetch data from the resultSet
 while(rs.next()){
 	System.out.println(rs.getString("employeeId"));//Here we need to pass column name of the table
 }
+
+-To insert Data into the table
+
+Step 1 :- Frist we need to create mysql statement.//If you have been already created in that case you don't need to re-create this statement object 
+Statement stmt = myConn.createStatement();
+
+Step 2 :- Create mysql Insert query in simple string
+String qry = "INSERT INTO tbl_name(column_name1,column_name2)VALUES(value1,value2)";
+
+Step 3 :- Update that statement with the executeUpdate method with the argument of the string query.
+stmt.executeUpdate(qry);
+
+-To insert Data into the table
+
+Step 1 :- Frist we need to create mysql statement.//If you have been already created in that case you don't need to re-create this statement object 
+Statement stmt = myConn.createStatement();
+
+Step 2 :- Create mysql Update query in simple string
+String qry = "UPDATE tbl_employee SET 'column_Name' = 'new_value' where employeeId = 1";
+
+Step 3 :- Update that statement with the executeUpdate method with the argument of the string query.
+stmt.executeUpdate(qry);
+
+-To Delete Record from the table
+
+Step 1 :- Frist we need to create mysql statement.//If you have been already created in that case you don't need to re-create this statement object 
+Statement stmt = myConn.createStatement();
+
+Step 2 :- Create mysql Update query in simple string
+String qry = "DELETE FROM tbl_employee where 'column_name' = 'value'";
+
+Step 3 :- Update that statement with the executeUpdate method with the argument of the string query.
+stmt.executeUpdate(qry);
+
+
