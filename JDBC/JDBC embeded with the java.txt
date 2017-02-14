@@ -114,8 +114,8 @@ CREATE SCHEMA schema_name;
 * To create new table
 
 CREATE TABLE tbl_employee(
-	studentId Integer(10),
-    studentName varchar(200)
+	employeeId Integer(10),
+    employeeName varchar(200)
 );
 
 * T0 Fetch record from the table
