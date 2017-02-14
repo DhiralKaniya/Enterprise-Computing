@@ -1,0 +1,180 @@
+JDBC embeded with the java
+
+Index
+1 :- what is jdbc
+2 :- Feature of jdbc
+3 :- Database supported
+4 :- Architecture
+5 :- Development Process
+
+
+*What is JDBC ?
+	Allows us that java applicaton to connect to relational Databasae.
+
+*database can also be in local port, in network area or in cloud.
+	-provide portable access to various database
+		-its shows that if we are specify the code to connect database then no need to develop code sever time to connecting the databases.
+
+	-it call level interface to the database and support ANSI SQL 2003
+		We can simply passes sql statement to dealing with the database.
+
+	-you can also built your SQL statement.
+		like you can also create select,insert,update,delete statements.
+		like you can write your own store procedures.
+		you can alos write complex sql query to deal with the database like inner join and outer join.
+
+*JDBC Architecture 
+	-JDBC Driver 
+		-its provide link to connect database from your application.
+		-JDBC driver Database call api between database and application.
+
+		-Latest Version in JDBC is 4.0.
+		-its explicity loaded with class.forName(DriverName)
+
+	*JDBC API 
+		its deivide in to 2 part.
+			- java.sql 
+			- javax.sql
+
+		Key Class
+			-java.sql.DriverManager
+			-java.sql.Connection
+			-java.sql.Statement
+			-java.sql.ResultSet
+			-java.sql.Database
+
+* T0 Develop Java application with JDBC we have Development Process
+
+1 :- Connecting a Database
+	
+	-We need to find database(local,network,cloud)
+	-To connect with database
+		jdbc.<driveprotocol>.<driver connection details>
+
+	-Example
+		MS SQL Server :- jdbc:odbc:DemoDSN
+		MySQL Server :-jdbc:mysql://localhost:3306/demo
+
+	-Example with JDBC Code
+		import java.sql.*;
+
+		String dbURL = "jdbc.mysql://localhost:3306/demo";
+		String user = "Student";
+		String password = "Student";
+
+		Connection myConn = DriverManager.getConnection(dbURL,user,password);
+
+2 :- Create Statement Query
+	
+	-it will return statement Object to excute the mysql statement.
+
+	Statement myStmt=myConn.createStatement();
+
+3 :- Execute SQL Query
+
+	- ResultSet myRes = myStmt.executeQuery("Select * from employees");
+
+4 :- Process the ResultSeT
+	
+	-we can process about what we are getting data inside the ResultSet.
+	-Assume that "last_name" is the column name inside the table employee which is mention above in myStmt.executeQuery();.
+
+	- while(myRes.next()){
+		//Process  untill data is parcing
+		System.out.println(myRes.getString("last_name"));
+	}
+
+
+* Installing mysql database and jdbc driver in to your machine
+
+for the mysql database you can download database from 
+	- http://dev.mysql.com/downloads/
+
+for the mysql jdbc driver
+	-http://dev.mysql.com/downloads/connector/j/
+
+Commands
+
+1:- Install mysql in your machine(I am using Ubantu 16.04 )
+sudo apt-get install mysql-server mysql-client
+
+2:- Update our repository
+sudo apt-get update
+
+3 :- Installing mysql workbench
+sudo apt-get mysql-workbench
+
+You need to download the JDBC driver from its official website:- https://dev.mysql.com/downloads/connector/j
+
+* To Create new Schema in the mysql workbench
+
+CREATE SCHEMA schema_name;
+
+
+* To create new table
+
+CREATE TABLE tbl_employee(
+	studentId Integer(10),
+    studentName varchar(200)
+);
+
+* T0 Fetch record from the table
+
+SELECT * FROM tbl_employee
+
+* To show database schema design
+
+DESC tbl_employee
+Practical implementation
+
+
+1 :- first you need to implement driver manager class.
+	for the jdbc driver you can download it from the dev.mysql.com/download/connector/j
+	(Take jre file from there and download it.)
+
+2 :- After download it we need to import that file into our project
+	for that we need to copy that JRE file which we download from using above line into our project's libraries.
+
+
+* From the JAVA class make connection to the database
+
+1 :- first we need to import sql lib in our class file.
+for ex :- import java.sql.*;
+
+2 :- Create a connection with the database before start writing statement in class file
+
+for ex :- Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/databaseName",username,password);
+
+Here getConnection want the connection string from the user in that we have to mention which type of database we are going to use and after that server details with the port number (if any) and at the last database name.	
+At the end of the connection we need to give username and password which is shown as above.
+
+* From the java search data from the database 
+
+Example :-
+String qry = "SELECT * FROM tbl_employee" ;
+ResultSet myRes = null;
+Statement myStmt = null;
+try {
+   	this.myStmt = this.myConn.createStatement();
+    myRes = this.myStmt.executeQuery(qry);
+}catch(SQLException e){
+    System.out.println(e);
+}
+
+- To search data from the table with the connected database 
+
+Step 1 :- Frist we need to create mysql statement.
+Statement stmt = myConn.createStatement();
+
+Step 2 :- Create mysql search/select query in simple string
+String qry = "SELECT * FROM tbl_employee";
+
+Step 3 :- Excute statement with the method of executeQuery with String(query) argument which can fetch data from the database and it return the data in the resultset so for that we need to store that data into the ResultSet
+
+ResultSet rs = stmt.executeQuery(qry);
+
+Step 4 :- Fetch data from the resultSet
+
+while(rs.next()){
+	System.out.println(rs.getString("employeeId"));//Here we need to pass column name of the table
+}
