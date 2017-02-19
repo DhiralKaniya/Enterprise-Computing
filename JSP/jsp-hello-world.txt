@@ -1,0 +1,19 @@
+-write code between <%= %>
+-Create an object of your class
+
+
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        The time on the server is <%= new java.util.Date() %>
+    </body>
+</html>
+
+-To run this file right click on the jsp file compile it and then run it with the installed server.
+
+
