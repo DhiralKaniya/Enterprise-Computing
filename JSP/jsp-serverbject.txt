@@ -1,0 +1,45 @@
+Built In Server Objects
+
+1 :- Request
+	-it contains about https request headers and also form data.
+
+2 :- Response
+	-Provding HTTP Response
+
+3 :- out 
+	-JspWriter for including content in HTML page
+
+4 :- Session
+	-Unique session Object for each object
+
+5 :- application 
+	-Shared data for all users in the web application.
+
+
+*JSP Include file 
+-<jsp:include page = "my-header.html" />
+-<jsp:include page = "my-footer.jsp" />
+
+
+*JSP with HTML forms
+
+Demo.html
+	<form action = "myform.jsp" method = "post" >
+		First Name :- <input type = "text" name = "first name " />
+	</form>
+
+myform.jsp
+
+<%= request.getParameter("firstname") %>
+
+//Alternative syntax
+${param.firstname}
+
+* Cookies in JSP
+<%
+	String firstName = request.getParameter("firstname"); // get a value for cookie
+	Cookie myCookie = new Cookie("myapp.firstname",firstName); // Create cookie in the same browser
+	myCookie.setMaxAge(60*60*240);//Set cookie value
+	response.addCookie(myCookie);//send it into the server
+
+%>

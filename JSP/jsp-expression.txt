@@ -1,0 +1,28 @@
+JSP Scripting Expression
+
+1 :- JSP Expression :- <%= JSP Expression over here %>
+
+	YOu can compute some expression and its output will generate output as HTML in the browser.
+
+	Example :- <$= new java.util.Date() %>
+
+	-You can use string operation , mathematical expression and boolean expression in the expression.
+	-Please prefere jsp/JSPExpression.jsp for more example with same repository
+
+2 :- JSP Scriptlet :- <% Here we need to put java code start from 1 and up to n number of line %>
+
+		You can use looping statement, switch statement in the browser with the output of the HTML page with the use of the JSP Scriptlet.
+
+		Prefer JSPExpression.jsp for the exapmle.
+
+3 :- JSP Declaration :- <%! Java variable and methods %>
+	
+		You can declare methods and variable in the JSP Declarations.
+
+		Prefere JSPDeclaration.jsp for the example.
+
+
+* Java Class * 
+ Please prefere JSPClass.jsp and java/JavaTesting.java
+
+
