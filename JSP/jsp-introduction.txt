@@ -1,0 +1,42 @@
+* What is a web application ?
+
+-We application is the generate the HTML pages dynamically.
+
+ 	*How can web application is work ?
+		-User who are requesting for data from the server.
+		-Server search data from the database or anything else which same working as database.
+		-Server return the HTML page as per the user input to the web browser and we can call it to the users.
+
+				  Req. for data        Find data
+		Web Browser ------> webb Server -------->Database
+
+				   HTML Pages  	         Result
+		Web Browser <------ Web Server <--------Database
+
+
+
+Basic question is that 
+
+* What is JSP and Servlets ?
+
+-JSP and servelets are do the JAVA class on the web server.
+-They can read user input as HTML page.
+-Then they perfomr as per the inputed data.
+-Then severlets return an HTML page generated dynamically .
+								Web Server
+
+				--Search Data->      		---SQL--->
+	web browser  				Servlets  	 			Database 
+							       JSP
+				<--HTML Page--				<--Result--
+
+*What type of apps we create in the servlets
+
+-any Industry app
+-social media app
+-E-commerece 
+-student/employee
+
+Key Building block
+-jsp servlets are key component java ee edition.
+-Spring,Hibernet,jsf MVC framework are implement on the jsp.
