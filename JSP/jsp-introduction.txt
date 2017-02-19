@@ -40,3 +40,15 @@ Basic question is that
 Key Building block
 -jsp servlets are key component java ee edition.
 -Spring,Hibernet,jsf MVC framework are implement on the jsp.
+
+* What is JSP Page ?
+-JSP file having some HTML code and some java code.
+-It also include some dynamic content from the java code.
+
+* Where the JSP Process ?
+-JSP process on the JSP server (Tomcat,GlassFish Server)
+-Result of the java has been generate HTML code returned to web browser.
+
+Where to place JSP file ?
+-It store in the web content folder.
+-File must have .jsp extension.
