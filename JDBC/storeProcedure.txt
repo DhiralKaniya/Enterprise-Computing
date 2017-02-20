@@ -1,0 +1,31 @@
+Steps to call StroeProcedure from the java class
+
+Step 1 :- Get connection to the databse
+
+	 Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory?useSSL=false",username,password);
+
+Step 2 :- vefiry Data before procudure execute
+
+	Statement myStmt = myConn.createStatement();
+    String qry = "SELECT * FROM tbl_Inventory";
+    ResultSet myRes = myStmt.executeQuery(qry);
+    while(myRes.next()){
+        System.out.println(myRes.getString("item_description"));
+    }
+
+Step 3 :- Prepare the Stored Procedure Statement
+
+	PreparedStatement mySPStmt = myConn.prepareCall("{call search_tbl_Inventory(?,?)}");
+
+Step 4 :- Set the Parametter if sp have
+
+	mySPStmt.setInt(1,10);
+	mySPStmt.setString(2,"HelloWorld");
+
+Step 5 :- Call the store Procedure
+	
+	mySPStmt.execute();
+
+Step 6 :- Set out data in the ResultSet if the statement having our data
+	
+	ResultSet myRes = mySPStmt.getResultSet();
