@@ -1,0 +1,86 @@
+1 :- Testing Store Procedure
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `search_tbl_Inventory`()
+BEGIN
+	SELECT * FROM tbl_Inventory ;
+END
+
+2 :- Category Table Store Procedure
+
+* Category Table's Procedure
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_tbl_category`(In item_name varchar(200))
+BEGIN
+INSERT INTO tbl_Category values(null,item_name);
+END
+
+CREATE PROCEDURE `search_tbl_category`()
+BEGIN
+SELECT * FROM tbl_Category;
+END
+
+CREATE PROCEDURE `search_tbl_category_by_id` (In cate_id int)
+BEGIN
+	SELECT * FROM tbl_Category where cate_Id = cate_id;
+END
+
+CREATE PROCEDURE `search_tbl_category_by_name` (In cate_name varchar(200))
+BEGIN
+	SELECT * FROM tbl_Category where cate_Name = cate_name;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_tbl_category`(In cate_id int,In cate_name varchar(200))
+BEGIN
+	UPDATE tbl_category SET cate_Name = cate_name where cate_Id = cate_id ;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_tbl_category`(In cate_id int)
+BEGIN
+	DELETE FROM tbl_Category where cate_Id = cate_id;
+END
+
+*Inventory Table procedure
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_tbl_inventory`(In item_description varchar(200),In qis int,In mr int,In cs int,In id int)
+BEGIN
+	INSERT INTO tbl_Inventory VALUES(null,item_description,mr,qis,cs,id);
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_tbl_inventory`(In ic int,In td varchar(200),In qis int,In mrs int,In ct int,In cid int)
+BEGIN
+	UPDATE tbl_Inventory SET item_description = td,qty_in_stock = qis,min_required_stock = mrs,cost=ct,cate_id = cid where item_code = ic;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_tbl_inventory`(In ic int)
+BEGIN
+	DELETE FROM tbl_Inventory WHERE item_Code=ic;
+END
+
+CREATE PROCEDURE `search_tbl_inventory_by_item_code` (In id int)
+BEGIN
+	SELECT * FROM tbl_Inventory WHERE item_code=id;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `search_tbl_inventory_by_category_id`(In cid int)
+BEGIN
+	SELECT * FROM tbl_Inventory WHERE cate_Id = cid;
+END
+
+CREATE PROCEDURE `items_under_stock` ()
+BEGIN
+	SELECT * FROM tbl_Inventory where qty_in_stock < min_required_stock;
+END
+
+CREATE PROCEDURE `search_tbl_Inventory_with_pagination` (In st int,In en int)
+BEGIN
+	SELECT * FROM tbl_Inventory LIMIT st,en;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `total_inventory_cost`()
+BEGIN
+	SELECT sum(cost)as TOTAL FROM tbl_Inventory;
+END
+
+
+

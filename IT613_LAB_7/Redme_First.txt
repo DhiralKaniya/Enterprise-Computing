@@ -1,0 +1,40 @@
+Hello Sir,
+
+I have created Procedure to implement the inventoryItem with DAO with the use of JDBC mysql connection method.
+
+To Understood code i would like to suggest the follow sequeces to see file
+
+step 1 :- see the createTableInventory.txt 
+	
+	-In this file all two table structures are mention.
+	-first is tbl_category and second is tbl_inventory.
+	-tbl_category is referenced in the tbl_inventory.
+
+step 2 :- see the storeprocedure_Inentory.txt
+	
+	-In this file i had mention all store procedure which i used in the code.
+
+step 3 :- See all user define exception in the UserDefineException folder
+	
+	-In this folder i have created all the user Define exception which i use in the program.
+
+/*InventoryCategory.java and InventoryItem.java having the getter setter methods with constructor*/
+
+step 4 :- see dbconnect.java in the InventoryDAO folder
+
+	-this file is responsible for the connection with database as well as there is some mehtods which can create dynamically procedure (setPreparedStatement), can set Parameter as per user input(setParaMeter),and other methods are used to execute procedure (execute,executeUpdate) and fetch result set from the user(getResult).
+
+step 5 :- see InventoryMysql.java
+	
+	-this file is reponsible for the insert , update, delete , search with various techniques from the inventory and category table with the mysql jar file.
+
+step 6 :- see InventoryDAO.java
+
+	-in this file actual skaletone is implemented as per assignment.
+
+step 7 :- see InventoryDAOTester.java
+
+	-this file is testing file of InventoryDAO object.
+
+Your Sincerely,
+Dhiral Kaniya | 201612066.
