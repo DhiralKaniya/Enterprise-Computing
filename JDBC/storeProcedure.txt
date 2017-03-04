@@ -7,11 +7,11 @@ Step 1 :- Get connection to the databse
 Step 2 :- vefiry Data before procudure execute
 
 	Statement myStmt = myConn.createStatement();
-    String qry = "SELECT * FROM tbl_Inventory";
-    ResultSet myRes = myStmt.executeQuery(qry);
-    while(myRes.next()){
-        System.out.println(myRes.getString("item_description"));
-    }
+    	String qry = "SELECT * FROM tbl_Inventory";
+   	 ResultSet myRes = myStmt.executeQuery(qry);
+	    while(myRes.next()){
+		System.out.println(myRes.getString("item_description"));
+	    }
 
 Step 3 :- Prepare the Stored Procedure Statement
 
