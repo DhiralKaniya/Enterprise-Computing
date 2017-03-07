@@ -48,7 +48,7 @@ public class dbConnect {
         }catch(SQLException e){
             this.dbConnectError();
         }
-    } 
+    }
     //Prepare Procedure Statement
     public void setPreparedStatement(String ProcedureName,int arg) throws SQLException{
         try {
@@ -77,6 +77,7 @@ public class dbConnect {
     public void setParaMeter(int paraNumber,double paraValue) throws SQLException{
         this.myStmt.setDouble(paraNumber, paraValue);
     }
+   
     //Execute update the procedure
     public void executeUpdateProcedure()throws SQLException{
         this.myStmt.executeUpdate();
@@ -109,4 +110,5 @@ public class dbConnect {
     public void commit()throws SQLException{
         this.myConn.commit();
     }
+   
 }
