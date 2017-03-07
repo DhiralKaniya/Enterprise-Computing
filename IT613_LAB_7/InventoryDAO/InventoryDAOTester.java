@@ -21,7 +21,7 @@ public class InventoryDAOTester {
             System.out.println(e);
         }
         try{
-            int size = 3;
+            int size = 2;
             newDAO.setPageLength(size);
             InventoryItem[] find1stPageData = newDAO.getPaginatedItems(1);
             for(int i=0;i<size;i++){
