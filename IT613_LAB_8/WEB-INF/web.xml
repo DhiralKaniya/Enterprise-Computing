@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>HelloWorld</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MathTable</servlet-name>
+        <servlet-class>MathTable.MathTable</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Table</servlet-name>
+        <servlet-class>Table.Table</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Meaning</servlet-name>
+        <servlet-class>Meaning.Meaning</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/HelloWorld</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MathTable</servlet-name>
+        <url-pattern>/MathTable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Table</servlet-name>
+        <url-pattern>/Table</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Meaning</servlet-name>
+        <url-pattern>/Meaning</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
