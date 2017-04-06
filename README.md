@@ -33,4 +33,4 @@ Tools
 
 4 :- Glashfish Server
 
-5 :- Lo Open JDK 1.8
+5 :- Open JDK 1.8
