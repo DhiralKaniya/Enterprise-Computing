@@ -18,7 +18,7 @@ Topics are covered in this Repository are as follow.
 5 :- Web Programming with MVC
 
 
-Technology used 
+Language used 
 
 1 :- JAVA 
 
@@ -33,3 +33,4 @@ Tools
 
 4 :- Glashfish Server
 
+5 Lo Open JDK 1.8
