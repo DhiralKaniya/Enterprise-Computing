@@ -1,0 +1,14 @@
+HTPP Requests
+
+1 :- To view all currency at index.jsp
+CurrencyController?action=view
+
+2 :- TO Insert Currency
+CurrencyController?action=insert
+
+3 :-  TO view Source and Destination Currency
+CurrencyController?action=currency
+
+4 :-  To Convert Currency 
+CurrencyController?action=convert
+

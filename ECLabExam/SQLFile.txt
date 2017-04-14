@@ -1,0 +1,7 @@
+*Currency Convertor
+
+CREATE TABLE tbl_CurrencyRate(
+	source_currency varchar(20),
+    target_currency varchar(20),
+    conversion_rate numeric
+)
