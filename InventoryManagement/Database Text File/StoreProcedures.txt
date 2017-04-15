@@ -1,0 +1,230 @@
+1 :- Testing Store Procedure
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `search_tbl_Inventory`()
+BEGIN
+	SELECT * FROM tbl_Inventory ;
+END
+
+2 :- Category Table Store Procedure
+
+* Category Table's Procedure
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_tbl_category`(In item_name varchar(200))
+BEGIN
+INSERT INTO tbl_Category values(null,item_name);
+END
+
+CREATE PROCEDURE `search_tbl_category`()
+BEGIN
+SELECT * FROM tbl_Category;
+END
+
+CREATE PROCEDURE `search_tbl_category_by_id` (In cate_id int)
+BEGIN
+	SELECT * FROM tbl_Category where cate_Id = cate_id;
+END
+
+CREATE PROCEDURE `search_tbl_category_by_name` (In cate_name varchar(200))
+BEGIN
+	SELECT * FROM tbl_Category where cate_Name = cate_name;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_tbl_category`(In cate_id int,In cate_name varchar(200))
+BEGIN
+	UPDATE tbl_category SET cate_Name = cate_name where cate_Id = cate_id ;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_tbl_category`(In cate_id int)
+BEGIN
+	DELETE FROM tbl_Category where cate_Id = cate_id;
+END
+
+*Inventory Table procedure
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_tbl_inventory`(In item_description varchar(200),In qis int,In mr int,In cs int,In id int)
+BEGIN
+	INSERT INTO tbl_Inventory VALUES(null,item_description,mr,qis,cs,id);
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_tbl_inventory`(In ic int,In td varchar(200),In qis int,In mrs int,In ct int,In cid int)
+BEGIN
+	UPDATE tbl_Inventory SET item_description = td,qty_in_stock = qis,min_required_stock = mrs,cost=ct,cate_id = cid where item_code = ic;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_tbl_inventory`(In ic int)
+BEGIN
+	DELETE FROM tbl_Inventory WHERE item_Code=ic;
+END
+
+CREATE PROCEDURE `search_tbl_inventory_by_item_code` (In id int)
+BEGIN
+	SELECT * FROM tbl_Inventory WHERE item_code=id;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `search_tbl_inventory_by_category_id`(In cid int)
+BEGIN
+	SELECT * FROM tbl_Inventory WHERE cate_Id = cid;
+END
+
+CREATE PROCEDURE `items_under_stock` ()
+BEGIN
+	SELECT * FROM tbl_Inventory where qty_in_stock < min_required_stock;
+END
+
+CREATE PROCEDURE `search_tbl_Inventory_with_pagination` (In st int,In en int)
+BEGIN
+	SELECT * FROM tbl_Inventory LIMIT st,en;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `total_inventory_cost`()
+BEGIN
+	SELECT sum(cost)as TOTAL FROM tbl_Inventory;
+END
+
+3 :- Customer's Store Process
+
+CREATE PROCEDURE `insert_tbl_Customer` (IN custName varchar(200),IN contactno varchar(200),IN emailid varchar(200),IN custPass varchar(200))
+BEGIN
+	INSERT INTO tbl_Customer values(null,custName,contactno,emailid,custPass);
+END
+
+CREATE PROCEDURE `delete_tbl_Customer` (In custid int)
+BEGIN
+	DELETE FROM tbl_Customer where customerid = custid;
+END
+
+CREATE PROCEDURE `update_tbl_Customer` (IN custid INT,IN custName varchar(200),IN contactno varchar(200),IN email varchar(200),IN custPass varchar(200))
+BEGIN
+	UPDATE tbl_Customer SET Name=custName,contactnp=contactno,emailid=email,password=custPass WHERE customerid = custid;
+END
+
+CREATE PROCEDURE `search_tbl_Customer` (IN custid int)
+BEGIN
+	SELECT * FROM tbl_Customer where customerid = custid;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `search_tbl_CustomerByUsername`(In eid varchar(200))
+BEGIN
+	SELECT * FROM tbl_Customer WHERE emailid=eid;
+END
+
+CREATE PROCEDURE `search_tbl_CustomerAll` ()
+BEGIN
+	SELECT * FROM tbl_Customer;
+END
+
+4 :- Shopping cart's store Procedure
+
+CREATE PROCEDURE `insert_tbl_Shoppingcart` (IN ic int,IN qty int,IN rate int,IN od varchar(10),IN total int,IN custid int)
+BEGIN
+	INSERT INTO tbl_Shoppingcart VALUES(null,ic,qty,rate,od,total,custid);
+END
+
+CREATE PROCEDURE `delete_tbl_Shoppingcart` (IN id int)
+BEGIN
+	DELETE FROM tbl_Shoppingcart WHERE cartid = id;
+END
+
+CREATE PROCEDURE `update_tbl_Shoppingcart` (IN cid int,IN ic int,IN qty int,IN rate int,IN od varchar(10),IN total int,IN cust_id int)
+BEGIN
+	UPDATE tbl_Shoppingcart SET order_qty = qty,order_rate = rate,order_date=od,total_amount=total,custid=cust_id,item_code=ic WHERE cartid=cid;
+END
+
+CREATE PROCEDURE `search_tbl_customer` (IN cid int)
+BEGIN
+	SELECT * FROM tbl_Shoppingcart where cartid = cid;
+END
+
+CREATE PROCEDURE `search_tbl_ShoppingcartByItemcode` (IN ic int)
+BEGIN
+	SELECT * FROM tbl_Shoppingcart WHERE item_code = ic;
+END
+
+CREATE PROCEDURE `search_tbl_ShoppingcartByCustomerId` (IN cid int)
+BEGIN
+	SELECT * FROM tbl_Shoppingcart WHERE custid=cid;
+END
+
+CREATE PROCEDURE `search_tbl_ShoppingCartAll` ()
+BEGIN
+	SELECT * FROM tbl_Shoppingcart;
+END
+
+5 :- Order table's Store Procedure
+
+CREATE PROCEDURE `insert_tbl_Order` (IN cid int,IN ic int,IN qty int,IN rate int,IN od varchar(10),IN total int,IN cust_id int,IN os varchar(10))
+BEGIN
+	INSERT INTO tbl_Order VALUES(null,cid,ic,qty,rate,total,od,os);
+END
+
+
+CREATE PROCEDURE `delete_tbl_Order` (IN onumber int)
+BEGIN
+	DELETE FROM tbl_Order WHERE ordernumber=onumber;
+END
+
+CREATE PROCEDURE `update_tbl_Order` (IN onum int,IN cid int,IN ic int,IN qty int,IN rate int,IN od varchar(10),IN total int,IN cust_id int,IN os varchar(10))
+BEGIN
+	UPDATE tbl_Order SET custid = cid,item_code=ic,order_qty=qty,order_rate=rate,total_amount=total,order_date=od,order_status=os WHERE ordernumber=onum;
+END
+
+CREATE PROCEDURE `search_tbl_OrderAll` ()
+BEGIN
+	SELECT * FROM tbl_Order;
+END
+
+CREATE PROCEDURE `search_tbl_Order` (IN onum INT)
+BEGIN
+	SELECT * FROM tbl_Order WHERE ordernumber = onum;
+END
+
+CREATE PROCEDURE `select_tbl_OrderByCustId` (IN cid int)
+BEGIN
+	SELECT * FROM tbl_Order WHERE custid = cid;
+END
+
+CREATE PROCEDURE `search_tbl_OrderByItem` (IN ic int)
+BEGIN
+	SELECT * FROM tbl_Order WHERE item_code = ic;
+END
+
+CREATE PROCEDURE `delete_tbl_shoppingcartICS` (IN ic int,IN cust int,IN cid int)
+BEGIN
+	DELETE FROM tbl_Shoppingcart WHERE cartid = cid AND item_code=ic AND custid=cust;
+END
+
+
+*Updated Structure
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_tbl_Shoppingcart`(IN cid int,IN ic int,IN qty int,IN rate int,IN od varchar(10),IN total int,IN custid int)
+BEGIN
+	INSERT INTO tbl_Shoppingcart VALUES(cid,ic,qty,rate,od,total,custid);
+END
+
+CREATE PROCEDURE `search_tbl_ShoppingcartByicust` (IN cust int,IN ic int)
+BEGIN
+	SELECT * FROM tbl_Shoppingcart WHERE item_code = ic AND custid=cust;
+END
+
+CREATE PROCEDURE `update_tbl_Shoppingcart_qty` (IN ic int,IN cid int,IN qty int)
+BEGIN
+	UPDATE tbl_Shoppingcart SET order_qty = qty WHERE item_code=ic AND custid=cid;
+END
+
+CREATE PROCEDURE `delete_tbl_ShoppingcartByCust` (IN cid int,IN ic int,IN cust int)
+BEGIN
+	DELETE FROM tbl_Shoppingcart WHERE cartid=cid AND custid=cust AND item_code=ic;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `place_Order`(IN cid int,IN ic int,IN qty int,IN rate int,IN od varchar(10),IN total int,IN os varchar(10),IN cart int)
+BEGIN
+	DELETE FROM tbl_Shoppingcart WHERE cartid=cart AND custid=cid AND item_code=ic;
+    UPDATE tbl_Inventory SET qty_in_stock = qty_in_stock-qty WHERE item_code=ic;
+	INSERT INTO tbl_Order VALUES(null,cid,ic,qty,rate,total,od,os);
+END
+
+CREATE PROCEDURE `search_tbl_OrderByCid` (IN cid int)
+BEGIN
+	SELECT * FROM tbl_Order WHERE custid=cid;
+END
+
