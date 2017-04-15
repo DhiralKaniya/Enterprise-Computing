@@ -24,3 +24,29 @@ modification in the tbl_inventory table
 -INSERT INTO tbl_Category values(null,'Sales');
 -INSERT INTO tbl_Inventory values(null,"Hello World",10,2,3000,1)	
 
+*Shoppingcart table has been created
+Create Table tbl_Shoppingcart(
+	cartid int primary key auto_increment,
+    item_code int references tbl_Inventory(item_code),
+    order_qty int,
+    order_rate int,
+    order_date varchar(10),
+    total_amount int,
+    custid int references tbl_Customer(custid)
+)
+
+ALTER TABLE tbl_Shoppingcart DROP COLUMN custid;
+ALTER TABLE tbl_Shoppingcart add column custid int references tbl_Customer(customerId);
+
+*tbl_Order
+
+CREATE TABLE tbl_Order(
+	ordernumber int primary key auto_increment,
+    custid int references tbl_Customer(customerId),
+    item_code int references tbl_Inventory(item_code),
+    order_qty int,
+    order_rate int,
+    total_amount int,
+    order_date varchar(10),
+    order_status varchar(10)
+)
