@@ -34,3 +34,7 @@ Tools
 4 :- Glashfish Server
 
 5 :- Open JDK 1.8
+
+# Inventory Management System
+
+    It is a web application that allows to manage InventoryItem with the respective category and allows to purchase product to the customer via shopping cart. This small project was made with JSP-servlet, JAVA classes and JDBC-mysql database connnectivity method. This small project is also follow MVC architecture to manuplate data and also use singleton pattern for database connectivity.
